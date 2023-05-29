@@ -1,17 +1,18 @@
 import React, {createContext, useReducer} from 'react';
 
 export default (reducer, initialState, actions) => {
+    
+    const Context = createContext();
+
+    const Provider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     //attach dispatch to actions in an object
     const bindActions = {};
 
-    for(const [key,value] of Object.entries(actions)){
+    for(let key in actions){
         bindActions[key] = actions[key](dispatch)
     }
 
-    const Context = createContext();
-
-    const Provider = ({children}) => {
         return(
             <Context.Provider value={{...bindActions, state}}>
                 {children}
