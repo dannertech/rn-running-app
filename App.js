@@ -10,7 +10,7 @@ import TrackListScreen from './src/screens/TrackListScreen';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-import {Provider, Context} from './src/context/createDataContext';
+import {Provider as AuthProvider} from './src/context/AuthContext.js';
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
@@ -30,7 +30,7 @@ const switchNavigator = createSwitchNavigator({
 
 const AppContainer = createAppContainer(switchNavigator);
 
-export default () => <SafeAreaProvider><AppContainer /></SafeAreaProvider>
+export default () => <AuthProvider><SafeAreaProvider><AppContainer /></SafeAreaProvider></AuthProvider>
 
 // const App = () => {
 //   return(
