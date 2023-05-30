@@ -11,6 +11,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider as AuthProvider} from './src/context/AuthContext.js';
+import { setNavigator } from './src/navigationRef';
+
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
@@ -30,7 +32,7 @@ const switchNavigator = createSwitchNavigator({
 
 const AppContainer = createAppContainer(switchNavigator);
 
-export default () => <AuthProvider><SafeAreaProvider><AppContainer /></SafeAreaProvider></AuthProvider>
+export default () => <AuthProvider><SafeAreaProvider><AppContainer ref={(navigator) => setNavigator(navigator)}/></SafeAreaProvider></AuthProvider>
 
 // const App = () => {
 //   return(
