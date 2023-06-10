@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Context as LocationContext} from '../context/LocationContext'
 import {Text, StyleSheet} from 'react-native';
 import MapView, {Polyline} from 'react-native-maps';
 
 const Map = () => {
+    const { state } = useContext(LocationContext);
     
     return(
         <MapView style={styles.map}
         initialRegion={{
-            latitude: 37.33233,
-            longitude: -122.03121,
+            latitude: 33.58765690248779,
+            longitude: -82.15223148036128,
             latitudeDelta: 0.01,
             longitudeDelta: 0.01
         }}

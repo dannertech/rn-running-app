@@ -5,7 +5,7 @@ import {Text} from 'react-native-elements';
 import {SafeAreaView} from 'react-navigation';
 import Map from '../components/Map';
 import {requestForegroundPermissionsAsync, watchPositionAsync, Accuracy} from 'expo-location';
-import '../_mockLocation';
+//import '../_mockLocation';
 
 const TrackCreateScreen = () => {
     const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const TrackCreateScreen = () => {
                 timeInterval: 1000,
                 distanceInterval: 10
             }, (location) => {
-               // console.log(location);
+               console.log(location);
                addLocation(location);
             })
         }catch (error) {
