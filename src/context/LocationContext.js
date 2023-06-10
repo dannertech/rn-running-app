@@ -10,6 +10,11 @@ const initialState = {
 
 const locationReducer = (state, action) => {
     switch(action.type){
+        case 'add_current_location':
+            return {
+                ...state,
+                currentLocation: action.payload
+            }
         default:
             return state;
     }
@@ -28,12 +33,12 @@ const stopRecording = dispatch => {
 };
 
 const addLocation = dispatch => {
-    return () => {
-
+    return (location) => {
+        dispatch({type: 'add_current_location', payload: location})
     }
 };
 
-const {Context, Provider} = createDataContext(
+export const {Context, Provider} = createDataContext(
     locationReducer,
     initialState,
     {

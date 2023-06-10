@@ -11,6 +11,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider as AuthProvider} from './src/context/AuthContext.js';
+import {Provider as LocationProvider} from './src/context/LocationContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 
@@ -34,7 +35,7 @@ const switchNavigator = createSwitchNavigator({
 
 const AppContainer = createAppContainer(switchNavigator);
 
-export default () => <AuthProvider><SafeAreaProvider><AppContainer ref={(navigator) => setNavigator(navigator)}/></SafeAreaProvider></AuthProvider>
+export default () => <LocationProvider><AuthProvider><SafeAreaProvider><AppContainer ref={(navigator) => setNavigator(navigator)}/></SafeAreaProvider></AuthProvider></LocationProvider>
 
 // const App = () => {
 //   return(
