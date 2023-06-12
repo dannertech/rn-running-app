@@ -8,7 +8,7 @@ const Map = () => {
 
     const initialLocation = {
         longitude: -122.0312186,
-        longitude: 37.33233141
+        latitude: 37.33233141
     }
     
     if(!currentLocation) {

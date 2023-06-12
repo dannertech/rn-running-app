@@ -7,17 +7,19 @@ import {SafeAreaView} from 'react-navigation';
 import Map from '../components/Map';
 import useLocation from '../hooks/useLocation';
 import '../_mockLocation';
+import TrackForm from '../components/TrackForm';
 
 const TrackCreateScreen = ({isFocused}) => {
     
-    const { addLocation } = useContext(isFocused, LocationContext);
-    const [err] = useLocation((location => addLocation(location)))
+    const { addLocation } = useContext(LocationContext);
+    const [err] = useLocation(isFocused, addLocation)
     return(
         <SafeAreaView forceInset={{top: 'always'}}>
             <Text h2>This is the Track Create Screen</Text>
             <Map />
             
-            {error ? <Text>Please enable Location Services</Text> : null}
+            {err ? <Text>Please enable Location Services</Text> : null}
+            <TrackForm />
         </SafeAreaView>
     )
 };
